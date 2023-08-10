@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Temperature Converter</title>
+</head>
+<body>
+    <div class="converter">
+        <h1>Temperature Converter</h1>
+        <label for="celsius">Celsius:</label>
+        <input type="number" id="celsius" placeholder="Enter Celsius" oninput="convert('celsius')">
+        
+        <label for="fahrenheit">Fahrenheit:</label>
+        <input type="number" id="fahrenheit" placeholder="Enter Fahrenheit" oninput="convert('fahrenheit')">
+    </div>
+    <script>
+        function convert(source) {
+            if (source === 'celsius') {
+                const celsiusInput = document.getElementById('celsius');
+                const fahrenheitInput = document.getElementById('fahrenheit');
+                const celsiusValue = parseFloat(celsiusInput.value);
+        
+                const fahrenheitValue = (celsiusValue * 9/5) + 32;
+                fahrenheitInput.value = isNaN(fahrenheitValue) ? '' : fahrenheitValue.toFixed(2);
+            } else if (source === 'fahrenheit') {
+                const celsiusInput = document.getElementById('celsius');
+                const fahrenheitInput = document.getElementById('fahrenheit');
+                const fahrenheitValue = parseFloat(fahrenheitInput.value);
+        
+                const celsiusValue = (fahrenheitValue - 32) * 5/9;
+                celsiusInput.value = isNaN(celsiusValue) ? '' : celsiusValue.toFixed(2);
+            }
+        }        
+    </script>
+</body>
+</html>
